@@ -1,0 +1,20 @@
+{
+  "global": {
+    "version": 2,
+    "prototyping": false,
+    "apiUrls": {}
+  },
+  "httpClient": {
+    "clientType": "fetch",
+    "tokenKey": "cc-mixed-token"
+  },
+  "apiClient": {
+    "type": "live",
+    "apikey": "key"
+  },
+  "naturalEvents": {
+    "apiUrls": {
+      "fetchNaturalEvents": "/api/natural-events"
+    }
+  }
+}

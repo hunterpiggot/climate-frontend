@@ -1,0 +1,21 @@
+{
+  "global": {
+    "version": 2,
+    "prototyping": false,
+    "consoleEnabled": true,
+    "apiUrls": {}
+  },
+  "httpClient": {
+    "clientType": "fetch",
+    "tokenKey": "cc-mock-token"
+  },
+  "apiClient": {
+    "type": "live",
+    "apikey": "key"
+  },
+  "naturalEvents": {
+    "apiUrls": {
+      "fetchNaturalEvents": "/api/natural-events"
+    }
+  }
+}

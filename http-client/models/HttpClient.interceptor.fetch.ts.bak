@@ -1,0 +1,29 @@
+// TODO: this code seems unused. If that is the case, save it somewhere else and remove this file from here
+// import { ISecurityStore } from '@/store/security'
+// import { useHttpClient } from '../index'
+// import { IHttpRequestParams } from './HttpRequestParams.interface'
+// import { JwtHelpers } from '@/store/helpers'
+
+// let securityStore: ISecurityStore
+
+// export function setSecurityStoreForFetchInterceptor(store: ISecurityStore) {
+//   securityStore = store
+// }
+
+// export function fetchInterceptor() {
+//   return async function <P = void>(parameters: IHttpRequestParams<P>) {
+//     await securityStore.actions.refreshToken()
+
+//     // Getting the new access_token
+//     const access_token = JwtHelpers.getAccessToken()
+
+//     // setting the new auth bearer token
+//     if (parameters.headers) {
+//       parameters.headers.Authorization = `Bearer  ${access_token}`
+//     }
+
+//     // Retry the original request,
+//     const data = await useHttpClient().request(parameters)
+//     return Promise.resolve(data)
+//   }
+// }

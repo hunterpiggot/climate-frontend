@@ -1,13 +1,11 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import { ClimateDashboardView, NavBarView } from "@/views";
+import Link from "next/link";
 
 const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">About</Link>
-    </p>
-  </Layout>
-)
+  <div className="h-full bg-page-background">
+    <NavBarView />
+    <ClimateDashboardView />
+  </div>
+);
 
-export default IndexPage
+export default IndexPage;

@@ -4,17 +4,37 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "mock": "cp .env.mock .env.local && next",
+    "prod": "cp .env.prod .env.local && next build && next start"
   },
   "dependencies": {
-    "next": "latest",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@reduxjs/toolkit": "^1.9.5",
+    "@types/node": "20.5.1",
+    "@types/react": "18.2.20",
+    "@types/react-dom": "18.2.7",
+    "autoprefixer": "10.4.15",
+    "axios": "^1.4.0",
+    "chart.js": "^4.3.3",
+    "cross-fetch": "^4.0.0",
+    "encoding": "^0.1.13",
+    "eslint": "8.47.0",
+    "eslint-config-next": "13.4.19",
+    "i18next": "^23.4.9",
+    "jwt-decode": "^3.1.2",
+    "lodash": "^4.17.21",
+    "next": "13.4.19",
+    "next-redux-wrapper": "^8.1.0",
+    "postcss": "8.4.28",
+    "react": "18.2.0",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "18.2.0",
+    "react-redux": "^8.1.2",
+    "redux": "^4.2.1",
+    "tailwindcss": "3.3.3",
+    "typescript": "5.1.6"
   },
   "devDependencies": {
-    "@types/node": "^12.12.21",
-    "@types/react": "^17.0.2",
-    "@types/react-dom": "^17.0.1",
-    "typescript": "^4.8.3"
+    "@types/lodash": "^4.14.198"
   }
 }
