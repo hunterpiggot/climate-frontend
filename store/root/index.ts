@@ -25,7 +25,6 @@ const initialState = {
     error: null,
     ids: [],
     entities: [],
-    // ... any other properties you have in INaturalEventsState
   },
 };
 

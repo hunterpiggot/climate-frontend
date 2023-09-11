@@ -18,6 +18,10 @@ export function useCallNaturalEventsList() {
     }
   }, []);
 
+  console.log(
+    "🚀 ~ file: NaturalEvents.hooks.ts:22 ~ useCallNaturalEventsList ~ useAppSelector(selectNaturalEventsList);:",
+    useAppSelector(selectNaturalEventsList)
+  );
   return useAppSelector(selectNaturalEventsList);
 }
 

@@ -17,12 +17,14 @@ export const naturalEventsSelectionAdapter = createEntityAdapter<any>({
 });
 
 const initialState =
-  naturalEventsSelectionAdapter.getInitialState<INaturalEventsState>({
-    naturalEventsStatus: RequestState.Idle,
-    naturalEventsList: [],
-    selectedNaturalEvent: {},
-    error: null,
-  });
+  naturalEventsSelectionAdapter.getInitialState<INaturalEventsState>(
+    Object.freeze({
+      naturalEventsStatus: RequestState.Idle,
+      naturalEventsList: [],
+      selectedNaturalEvent: {},
+      error: null,
+    })
+  );
 
 /**
  * thunks
@@ -49,6 +51,7 @@ const naturalEventsSlice = createSlice({
   initialState,
   reducers: {
     naturalEventsListChanged: (state, action) => {
+      console.log("🚀 ~ file: NaturalEvents.slice.ts:188 ~ state:", state);
       state.naturalEventsList = action.payload;
     },
     selectedNaturalEventChanged: (state, action) => {
@@ -81,10 +84,10 @@ export default naturalEventsSlice.reducer;
 export const { naturalEventsListChanged, selectedNaturalEventChanged } =
   naturalEventsSlice.actions;
 
-export const { selectAll: selectPatients, selectById: selectPatientById } =
-  naturalEventsSelectionAdapter.getSelectors<IRootState>(
-    (state) => state.naturalEvents
-  );
+// export const { selectAll: selectPatients, selectById: selectPatientById } =
+//   naturalEventsSelectionAdapter.getSelectors<IRootState>(
+//     (state) => state.naturalEvents
+//   );
 
 export const selectNaturalEventsList = (state: IRootState) => {
   return state.naturalEvents.naturalEventsList;

@@ -1,4 +1,4 @@
-const getXCoord = (longitude: number) => {
+const getXCoord = (longitude: number): number => {
   // long + 90 / 180 -6 if long >=6
   const adjustedLongitude = longitude + 180;
   if (adjustedLongitude >= 6) {
@@ -11,7 +11,7 @@ const getXCoord = (longitude: number) => {
   }
 };
 
-const getYCoords = (latitude: number) => {
+const getYCoords = (latitude: number): number => {
   let adjustedLatitude = 0;
 
   if (latitude >= 0) {
@@ -29,6 +29,7 @@ const getYCoords = (latitude: number) => {
 interface IGetCoords {
   latitude: number;
   longitude: number;
+  leftBuffer: number;
 }
 
 interface IGetCoordsResponse {
@@ -39,10 +40,11 @@ interface IGetCoordsResponse {
 export const getCoords = ({
   latitude,
   longitude,
+  leftBuffer,
 }: IGetCoords): IGetCoordsResponse => {
   const baseCss = ["absolute inset-0 z-0 w-[373px]"];
 
-  const left = getXCoord(longitude);
+  const left = getXCoord(longitude) + leftBuffer;
   const top = getYCoords(latitude);
   baseCss.push(`left-[${left}px]`);
   baseCss.push(`top-[${top}px]`);

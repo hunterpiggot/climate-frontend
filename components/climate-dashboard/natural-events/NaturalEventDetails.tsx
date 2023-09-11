@@ -6,7 +6,7 @@ interface INaturalEvent {
     minimum: number;
     maximum: number;
   };
-  date: Date;
+  date: string;
 }
 
 type Props = {

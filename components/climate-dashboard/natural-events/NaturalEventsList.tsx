@@ -1,32 +1,70 @@
 "use client";
-import { SortDescArrowSvg } from "@/assets";
+import {
+  NaturalEventDownArrowSvg,
+  NaturalEventUpArrowSvg,
+  SortDescArrowSvg,
+} from "@/assets";
 import { NaturalEventDetails } from ".";
 import { MutableRefObject, useEffect, useRef } from "react";
 import { INaturalEvent } from "@/models/INaturalEvents.interface";
-import { useAppSelector } from "@/shared-hooks/useAppSelector";
+import { useCallNaturalEventsList } from "./natural-events-slice/NaturalEvents.hooks";
+import { useAppDispatch, useAppSelector } from "@/shared-hooks/useAppSelector";
 import {
   selectNaturalEventsList,
-  selectNaturalEventsStatus,
-} from "./natural-events-slice/NaturalEvents.slice";
-import { configureStore } from "@reduxjs/toolkit";
-import { rootReducer } from "@/store";
-import { Provider } from "react-redux";
-import {
-  useCallNaturalEventsList,
-  useHandleEventListScroll,
-} from "./natural-events-slice/NaturalEvents.hooks";
-
-type Props = {
-  ref: MutableRefObject<any>;
-};
+  selectedNaturalEventChanged,
+} from "./natural-events-slice";
 
 export const NaturalEventsList = () => {
   const events = useCallNaturalEventsList();
-
-  const status = useAppSelector(selectNaturalEventsStatus);
-
+  console.log(
+    "🚀 ~ file: NaturalEventsList.tsx:16 ~ NaturalEventsList ~ events:",
+    events
+  );
   const scrollDivRef = useRef<any>(null);
-  useHandleEventListScroll(scrollDivRef);
+
+  const dispatch = useAppDispatch();
+  const updatedEvents = useAppSelector(selectNaturalEventsList);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = scrollDivRef.current.scrollTop;
+
+      if (scrollPosition % 28 === 0) {
+        const eventIndex = scrollPosition / 28;
+
+        console.log(
+          "🚀 ~ file: NaturalEventsList.tsx:35 ~ handleScroll ~ updatedEvents:",
+          updatedEvents
+        );
+        const event = events[eventIndex];
+        console.log(
+          "🚀 ~ file: NaturalEventsList.tsx:32 ~ handleScroll ~ events:",
+          events
+        );
+        console.log(
+          "🚀 ~ file: NaturalEventsList.tsx:32 ~ handleScroll ~ event:",
+          event
+        );
+
+        if (event) {
+          dispatch(selectedNaturalEventChanged(event));
+        }
+      }
+    };
+
+    if (scrollDivRef.current) {
+      console.log("Ref has been set");
+    }
+    const currentScrollDivRef = scrollDivRef?.current;
+
+    if (currentScrollDivRef) {
+      currentScrollDivRef.addEventListener("scroll", handleScroll);
+
+      return () => {
+        currentScrollDivRef.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, [scrollDivRef]);
 
   const scrollUp = () => {
     if (scrollDivRef.current) {
@@ -66,9 +104,13 @@ export const NaturalEventsList = () => {
           <div className="absolute inset-x-0 top-0 z-10 w-full pointer-events-none bg-gradient-to-b from-dashboard-tile-1 h-7"></div>
           <div className="absolute inset-x-0 bottom-0 z-10 w-full pointer-events-none bg-gradient-to-t from-dashboard-tile-1 h-7"></div>
         </div>
-        <div>
-          <div onClick={scrollUp}>up</div>
-          <div onClick={scrollDown}>dw</div>
+        <div className="self-center">
+          <div className="cursor-pointer pb-2" onClick={scrollUp}>
+            {NaturalEventUpArrowSvg}
+          </div>
+          <div className="cursor-pointer pt-2" onClick={scrollDown}>
+            {NaturalEventDownArrowSvg}
+          </div>
         </div>
       </div>
     </>

@@ -7,7 +7,7 @@ export interface INaturalEvent {
     minimum: number;
     maximum: number;
   };
-  date: Date;
+  date: string;
   coordinates: {
     latitude: number;
     longitude: number;
