@@ -3,6 +3,7 @@ import { BaseCard } from "./base-cards";
 import { CLimateNewsCard } from "./climate-news";
 import { CurrentElectricityRate } from "./current-electricity-rate";
 import { NaturalEventsCard } from "./natural-events/NaturalEventsCard";
+import { WeatherHistoryCard } from "./weather-history";
 
 export const ClimateDashboard = () => {
   return (
@@ -18,7 +19,7 @@ export const ClimateDashboard = () => {
           height="1"
           width="2"
           color="2"
-          cardBody={<AirQualityIndexCard />}
+          cardBody={<WeatherHistoryCard />}
         />
         <BaseCard
           height="2"

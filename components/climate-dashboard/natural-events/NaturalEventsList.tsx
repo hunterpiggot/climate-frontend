@@ -16,11 +16,7 @@ import {
 
 export const NaturalEventsList = () => {
   const events = useCallNaturalEventsList();
-  console.log(
-    "🚀 ~ file: NaturalEventsList.tsx:16 ~ NaturalEventsList ~ events:",
-    events
-  );
-  const scrollDivRef = useRef<any>(null);
+  const scrollDivRef = useRef<HTMLDivElement>(null);
 
   const dispatch = useAppDispatch();
   const updatedEvents = useAppSelector(selectNaturalEventsList);
@@ -29,22 +25,20 @@ export const NaturalEventsList = () => {
     const handleScroll = () => {
       const scrollPosition = scrollDivRef.current.scrollTop;
 
-      if (scrollPosition % 28 === 0) {
-        const eventIndex = scrollPosition / 28;
+      let offset = 0;
+      if (scrollDivRef.current.children.length) {
+        const clientHeight = scrollDivRef.current.children[0].clientHeight;
+        offset = (clientHeight - 28) / 2;
+      }
 
+      if ((scrollPosition - offset) % 28 === 0) {
+        const eventIndex = (scrollPosition - offset) / 28;
         console.log(
-          "🚀 ~ file: NaturalEventsList.tsx:35 ~ handleScroll ~ updatedEvents:",
-          updatedEvents
+          "🚀 ~ file: NaturalEventsList.tsx:36 ~ handleScroll ~ eventIndex:",
+          eventIndex
         );
+
         const event = events[eventIndex];
-        console.log(
-          "🚀 ~ file: NaturalEventsList.tsx:32 ~ handleScroll ~ events:",
-          events
-        );
-        console.log(
-          "🚀 ~ file: NaturalEventsList.tsx:32 ~ handleScroll ~ event:",
-          event
-        );
 
         if (event) {
           dispatch(selectedNaturalEventChanged(event));

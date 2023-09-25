@@ -34,7 +34,7 @@ export const BaseCard = ({
 
   const getCssClass = (): string => {
     const baseClass = [
-      "p-[14px] grid justify-items-center rounded-[25px] drop-shadow-lg",
+      "p-[14px] grid justify-items-center rounded-[25px] drop-shadow-lg max-h-[33rem]",
     ];
 
     // baseClass.push(`col-span-${width}`);

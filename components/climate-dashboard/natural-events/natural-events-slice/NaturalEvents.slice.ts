@@ -51,7 +51,6 @@ const naturalEventsSlice = createSlice({
   initialState,
   reducers: {
     naturalEventsListChanged: (state, action) => {
-      console.log("🚀 ~ file: NaturalEvents.slice.ts:188 ~ state:", state);
       state.naturalEventsList = action.payload;
     },
     selectedNaturalEventChanged: (state, action) => {
