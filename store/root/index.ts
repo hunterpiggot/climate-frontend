@@ -11,24 +11,33 @@ import {
 import { useDispatch } from "react-redux";
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import naturalEventsStore from "@/components/climate-dashboard/natural-events/natural-events-slice/NaturalEvents.slice";
+import weatherHistoryStore from "@/components/climate-dashboard/weather-history/weather-history-slice/WeatherHistory.slice";
 import { IRootStore } from "./RootStore.interface";
 
 const combinedReducer = combineReducers({
   naturalEvents: naturalEventsStore,
+  weatherHistory: weatherHistoryStore,
 });
 
-const initialState = {
-  naturalEvents: {
-    naturalEventsStatus: RequestState.Idle, // Use the correct enum or string literal here
-    naturalEventsList: [],
-    selectedNaturalEvent: {},
-    error: null,
-    ids: [],
-    entities: [],
-  },
-};
+// const initialState = {
+//   naturalEvents: {
+//     naturalEventsStatus: RequestState.Idle, // Use the correct enum or string literal here
+//     naturalEventsList: [],
+//     selectedNaturalEvent: {},
+//     error: null,
+//     ids: [],
+//     entities: [],
+//   },
+//   weatherHistory: {
+//     weatherHistoryStatus: RequestState.Idle,
+//     weatherHistoryList: [],
+//     error: null,
+//     ids: [],
+//     entities: [],
+//   },
+// };
 
-const reducer = (state = initialState, action: AnyAction) => {
+const reducer = (state, action: AnyAction) => {
   if (action.type === HYDRATE) {
     return {
       ...state,
@@ -41,7 +50,7 @@ const reducer = (state = initialState, action: AnyAction) => {
 export const rootStore = () =>
   configureStore({
     reducer,
-    preloadedState: initialState,
+    // preloadedState: initialState,
   });
 
 export type IAppStore = ReturnType<typeof rootStore>;

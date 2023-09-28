@@ -1,5 +1,6 @@
 // file: src/app-config/models/AppConfig.interface.ts
 
+import { IHistoricalDataApiClientUrls } from "@/api-client/models/historical-data";
 import { INaturalEventsApiClientUrls } from "@/api-client/models/natural-events";
 
 // import { IBloodGlucoseApiClientUrls } from '@/api-client/models/diabetes'
@@ -29,9 +30,13 @@ export interface IAppConfig {
   naturalEvents: {
     apiUrls: INaturalEventsApiClientUrls;
   };
+  historicalData: {
+    apiUrls: IHistoricalDataApiClientUrls;
+  };
 }
 
 export type INaturalEventsApiClientConfig = IAppConfig["naturalEvents"];
+export type IHistoricalDataApiClientConfig = IAppConfig["historicalData"];
 export type IGlobalConfig = IAppConfig["global"];
 export type IApiClientConfig = IAppConfig["apiClient"];
 

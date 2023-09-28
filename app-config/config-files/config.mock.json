@@ -17,5 +17,10 @@
     "apiUrls": {
       "fetchNaturalEvents": "/api/natural-events"
     }
+  },
+  "historicalData": {
+    "apiUrls": {
+      "fetchHistoricalData": "/api/historical-data?aggregation=[aggregation]&startDateTime=[startDateTime]&endDateTime=[endDateTime]"
+    }
   }
 }

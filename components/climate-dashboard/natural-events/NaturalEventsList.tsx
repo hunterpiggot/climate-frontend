@@ -33,10 +33,6 @@ export const NaturalEventsList = () => {
 
       if ((scrollPosition - offset) % 28 === 0) {
         const eventIndex = (scrollPosition - offset) / 28;
-        console.log(
-          "🚀 ~ file: NaturalEventsList.tsx:36 ~ handleScroll ~ eventIndex:",
-          eventIndex
-        );
 
         const event = events[eventIndex];
 
@@ -46,9 +42,9 @@ export const NaturalEventsList = () => {
       }
     };
 
-    if (scrollDivRef.current) {
-      console.log("Ref has been set");
-    }
+    // if (scrollDivRef.current) {
+    //   console.log("Ref has been set");
+    // }
     const currentScrollDivRef = scrollDivRef?.current;
 
     if (currentScrollDivRef) {
@@ -99,10 +95,10 @@ export const NaturalEventsList = () => {
           <div className="absolute inset-x-0 bottom-0 z-10 w-full pointer-events-none bg-gradient-to-t from-dashboard-tile-1 h-7"></div>
         </div>
         <div className="self-center">
-          <div className="cursor-pointer pb-2" onClick={scrollUp}>
+          <div className="pb-2 cursor-pointer" onClick={scrollUp}>
             {NaturalEventUpArrowSvg}
           </div>
-          <div className="cursor-pointer pt-2" onClick={scrollDown}>
+          <div className="pt-2 cursor-pointer" onClick={scrollDown}>
             {NaturalEventDownArrowSvg}
           </div>
         </div>

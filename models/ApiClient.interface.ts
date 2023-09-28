@@ -1,5 +1,6 @@
 // file: src/api-client/models/ApiClient.interface.ts
 
+import { IHistoricalDataApiClient } from "@/api-client/models/historical-data";
 import { INaturalEventsApiClient } from "@/api-client/models/natural-events";
 
 /**
@@ -9,4 +10,5 @@ import { INaturalEventsApiClient } from "@/api-client/models/natural-events";
  */
 export interface IApiClient {
   naturalEvents: INaturalEventsApiClient;
+  historicalData: IHistoricalDataApiClient;
 }
